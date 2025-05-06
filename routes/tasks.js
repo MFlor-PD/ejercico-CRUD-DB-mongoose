@@ -14,7 +14,7 @@ router.post("/create", async(req, res) => {
     }
 });
 
-router.get("/:taks", async (req, res) => {
+router.get("/", async (req, res) => {
     try {
         const tasks = await Task.find();
         res.status(200).send(tasks);
@@ -27,9 +27,9 @@ router.get("/:taks", async (req, res) => {
 }
 );
 
-router.get("/id/:_id", async (req, res) => {
+router.get("/id/:_id", async (req, res) => {   //no funciona
     try {
-        const task = await Task.findById(req.params.id);
+        const task = await Task.findById(req.params._id);
         if (!task) {
             return res.status(404).send({ message: "Task not found" });
         }
